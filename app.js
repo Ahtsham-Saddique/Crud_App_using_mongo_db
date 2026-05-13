@@ -2,6 +2,7 @@ const express = require ("express");
 
 const app = express();
 
+const path = require ("path");
 
 // Converts incoming JSON data into JavaScript object so req.body works for JSON requests; without this req.body becomes undefined for JSON data
 app.use(express.json());
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 // Makes public folder accessible for static files like CSS, JS, images; without this browser cannot load static assets
-app.use(express.static(Path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/',(req,res)=>
