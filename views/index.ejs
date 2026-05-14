@@ -3,10 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <!-- Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
     <title>Home_page</title>
 </head>
+
 <body>
-    
-    
+
+    <!-- Full screen dark background with padding -->
+    <div class="w-full min-h-screen bg-zinc-900  p-10">
+       <h1 class="text-3xl text-white tracking-tighter mb-3">Create user</h1>
+        <!-- Margin from top -->
+         <hr class="mb-1">
+        <form action="" clas="mt-10">
+
+            <!-- block makes each input appear on new line -->
+            <!-- mb-4 adds spacing between inputs -->
+            <!-- border-white makes border visible on dark background -->
+
+            <input 
+                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
+                type="text"
+                placeholder="First Name"
+            >
+
+            <input 
+                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
+                type="text"
+                placeholder="Last Name"
+            >
+
+            <input 
+                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
+                type="text"
+                placeholder="Email"
+            >
+
+            <input type="submit"  class="bg-blue-500 p-3 text-white rounded-lg" value="Submit">
+
+        </form>
+
+    </div>
+
 </body>
 </html>
