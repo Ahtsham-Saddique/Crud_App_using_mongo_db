@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/',(req,res)=>
 {
-    res.send("Hey");
+    res.render("index");
 })
 
 app.listen (3000,()=>
