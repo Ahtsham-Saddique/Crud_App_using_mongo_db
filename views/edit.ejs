@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <!-- Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+    <title>edit_page</title>
+</head>
+
+<body> 
+    <div class="w-full min-h-screen bg-zinc-900  p-10">
+        <div class="view m-5 text-blue-500">
+            <a href="/view">Back_to_view_users</a>
+        </div>
+          <h1 class="text-3xl text-white tracking-tighter mb-3">Edit_user</h1>
+        <!-- Margin from top -->
+         <hr class="mb-1">
+        <form action="/update/<%= user._id %>" method=post >
+
+            <!-- block makes each input appear on new line -->
+            <!-- mb-4 adds spacing between inputs -->
+            <!-- border-white makes border visible on dark background -->
+
+            <input 
+                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
+                type="text"
+                name="name"
+                placeholder="Name%>"
+                value="<%= user.name %>"
+            >
+
+            <input 
+                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
+                type="text"
+                name="email"
+                placeholder="Email"
+                 value="<%= user.email %>"
+            >
+
+            <input 
+                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
+                type="text" 
+                name="image"
+                placeholder="image"
+                 value="<%= user.image %>"
+            >
+
+            <input type="submit"  class="bg-yellow-500 p-3 text-white rounded-lg" value="Update">
+
+        </form>
+
+    </div>
+
+</body>
+</html>
