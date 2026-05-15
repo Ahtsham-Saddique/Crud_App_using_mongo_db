@@ -2,7 +2,9 @@ const express = require ("express");
 
 const app = express();
 
-const path = require ("path");
+const path = require ("path"); 
+
+const userModel = require("./models/user");
 
 // Converts incoming JSON data into JavaScript object so req.body works for JSON requests; without this req.body becomes undefined for JSON data
 app.use(express.json());
@@ -17,12 +19,68 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/view',(req,res)=>
+app.get('/',(req,res)=>
 {
-    res.render("viewUser.ejs");
+    res.render("index");
+})
+app.get('/view',async(req,res)=>
+{
+   let users= await userModel.find();
+   res.render("viewUser",{users:users});
+})
+
+app.post('/create', async (req,res)=>
+{
+    let {name,email,image}=req.body;
+
+    let createdUser = await userModel.create(
+        {
+            name:name,
+            email:email,
+            image:image
+        }
+    )
+    res.redirect('/view');
+
+})
+
+app.get('/delete/:id', async (req,res)=>
+{
+    let users= await userModel.findOneAndDelete(
+        {
+            _id:req.params.id
+        }
+    );
+    res.redirect('/view');
+    // res.render("viewUser",{users});
+})
+
+app.get('/editpage/:userid',async (req,res)=>
+{ 
+    let user = await userModel.findOne({_id:req.params.userid});
+    res.render("edit",{user:user});
+})
+ 
+app.post('/update/:userid', async (req,res)=>
+{
+   let{name,email,image}=req.body;
+
+    let updatedUser = await userModel.findOneAndUpdate(
+        {
+            _id:req.params.userid
+        },
+        {
+            name,
+            email,
+            image
+
+        },{new:true}
+    )
+    res.redirect('/view');
+
 })
 
 app.listen (3000,()=>
 {
-    console.log("Server is runnin on port 3000");
+    console.log("Server is running on port 3000");
 }) 
