@@ -4,57 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Your custom CSS -->
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Tailwind CSS -->
-   <script src="https://cdn.tailwindcss.com"></script>
-    <title>edit_page</title>
+    <title>Edit User</title>
 </head>
 
-<body> 
-    <div class="w-full min-h-screen bg-zinc-900  p-10">
-        <div class="view m-5 text-blue-500">
-            <a href="/view">Back_to_view_users</a>
+<body class="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black">
+
+<div class="min-h-screen flex items-center justify-center px-6 py-12">
+
+    <div class="w-full max-w-2xl">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+
+            <div>
+                <h1 class="text-4xl font-bold text-white">
+                    Edit User
+                </h1>
+
+                <p class="mt-2 text-zinc-400">
+                    Update the user's information below.
+                </p>
+            </div>
+
+            <a href="/view"
+               class="px-5 py-3 rounded-xl border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition">
+
+                ← Back to Users
+            </a>
+
         </div>
-          <h1 class="text-3xl text-white tracking-tighter mb-3">Edit_user</h1>
-        <!-- Margin from top -->
-         <hr class="mb-1">
-        <form action="/update/<%= user._id %>" method=post >
 
-            <!-- block makes each input appear on new line -->
-            <!-- mb-4 adds spacing between inputs -->
-            <!-- border-white makes border visible on dark background -->
+        <!-- Card -->
 
-            <input 
-                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
-                type="text"
-                name="name"
-                placeholder="Name%>"
-                value="<%= user.name %>"
-            >
+        <div class="bg-zinc-900/80 backdrop-blur-xl border border-zinc-800 rounded-3xl shadow-2xl p-8">
 
-            <input 
-                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
-                type="text"
-                name="email"
-                placeholder="Email"
-                 value="<%= user.email %>"
-            >
+            <div class="mb-8">
 
-            <input 
-                class="block mb-4 px-5 py-2 border-2 border-white rounded-lg outline-none"
-                type="text" 
-                name="image"
-                placeholder="image"
-                 value="<%= user.image %>"
-            >
+                <h2 class="text-xl font-semibold text-white">
+                    User Information
+                </h2>
 
-            <input type="submit"  class="bg-yellow-500 p-3 text-white rounded-lg" value="Update">
+                <p class="text-zinc-400 text-sm mt-1">
+                    Edit the details and save your changes.
+                </p>
 
-        </form>
+            </div>
+
+            <form action="/update/<%= user._id %>" method="POST" class="space-y-7">
+
+                <!-- Name -->
+
+                <div>
+
+                    <label class="block text-sm font-medium text-zinc-300 mb-2">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        value="<%= user.name %>"
+
+                        class="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-700 px-4 text-white placeholder:text-zinc-500 outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10">
+
+                </div>
+
+                <!-- Email -->
+
+                <div>
+
+                    <label class="block text-sm font-medium text-zinc-300 mb-2">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="<%= user.email %>"
+
+                        class="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-700 px-4 text-white placeholder:text-zinc-500 outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10">
+
+                </div>
+
+                <!-- Image -->
+
+                <div>
+
+                    <label class="block text-sm font-medium text-zinc-300 mb-2">
+                        Profile Image URL
+                    </label>
+
+                    <input
+                        type="text"
+                        name="image"
+                        value="<%= user.image %>"
+
+                        class="w-full h-12 rounded-xl bg-zinc-950 border border-zinc-700 px-4 text-white placeholder:text-zinc-500 outline-none transition focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10">
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="flex gap-4 pt-3">
+
+                    <a href="/view"
+                       class="flex-1 h-12 flex items-center justify-center rounded-xl border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition">
+
+                        Cancel
+
+                    </a>
+
+                    <button
+                        type="submit"
+
+                        class="flex-1 h-12 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold transition active:scale-[0.98]">
+
+                        Update User
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
+
+</div>
 
 </body>
 </html>
